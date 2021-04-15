@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Bowling Calculator</title>
+</head>
+<body>
+
+<div id="app"></div>
+<div id="gameBoard">
+    <h3>{{ board }}</h3>
+    <div id="scoreboard">
+
+    </div>
+    <div class="pins">
+        <button v-on:click="bowl(0)" id="zero">0</button>
+        <button v-on:click="bowl(1)" id="one">1</button>
+        <button v-on:click="bowl(2)" id="two">2</button>
+        <button v-on:click="bowl(3)" id="three">3</button>
+        <button v-on:click="bowl(4)" id="four">4</button>
+        <button v-on:click="bowl(5)" id="five">5</button>
+        <button v-on:click="bowl(6)" id="six">6</button>
+        <button v-on:click="bowl(7)" id="seven">7</button>
+        <button v-on:click="bowl(8)" id="eight">8</button>
+        <button v-on:click="bowl(9)" id="nine">9</button>
+        <button v-on:click="bowl(10)" id="ten">10</button>
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@3.0.5"></script>
+<script src="app.js"></script>   
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
+</html>
