@@ -27,7 +27,10 @@ const gameBoard = Vue.createApp({
             const rollNumber = this.roll === 1 ? "first" : "second";
 
             this.frames[this.currentFrame][rollNumber] = parseInt(pin_number);
-            
+
+            let rollOne = this.frames[this.currentFrame].first;
+            let rollTwo = this.frames[this.currentFrame].second;
+
             if (this.roll === 1) {
                 this.roll = 2
                 this.pins = 10 - this.frames[this.currentFrame].first;
@@ -36,14 +39,11 @@ const gameBoard = Vue.createApp({
                 this.roll = 1;
                 this.pins = 10;
 
-                let rollOne = this.frames[this.currentFrame].first;
-                let rollTwo = this.frames[this.currentFrame].second;
 
                 this.frames[this.currentFrame].score = this.frames[this.currentFrame].first + this.frames[this.currentFrame].second;
                 this.currentFrame++;
                 
                 this.updateTotalScore(rollOne, rollTwo);
-                
             }
         },
         updatePins(pins) {
@@ -52,10 +52,14 @@ const gameBoard = Vue.createApp({
         updateTotalScore(rollOne, rollTwo) {
             let total = 0;
 
-            if (this.isStrike(rollOne)) {
-                console.log("This is a strike!");
-            } else if (this.isSpare(rollOne, rollTwo)) {
-                console.log("This is a spare!");
+            for (let j = 0; j < this.currentFrame; j++) {
+                    // check for previous spare
+                    // in order to update previous frame score with sparebonus
+                    if (j !== 0) {
+                    if (this.frames[j - 1].score == 10 && this.frames[j - 1].second != 0) {
+                        this.frames[j - 1].score += this.frames[j].first;     
+                    }
+                }
             }
 
             for (let i in this.frames) {
@@ -65,12 +69,6 @@ const gameBoard = Vue.createApp({
             }
 
             this.score = total;
-        },
-        isStrike(rollOne) {
-            return rollOne === 10;
-        },
-        isSpare(rollOne, rollTwo) {
-            return rollOne + rollTwo === 10;
         },
     },
 })

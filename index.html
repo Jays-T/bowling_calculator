@@ -24,7 +24,7 @@
         </div>
     </div>
     <h3>{{ board }}</h3>
-    <div class="test-pins">
+    <div class="pins">
         <button v-on:click="bowl(0)">0</button>
         <button v-on:click="bowl(`${pin}`)" v-for="pin of pins">{{ pin }}</button>
     </div>
