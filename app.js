@@ -52,6 +52,8 @@ const gameBoard = Vue.createApp({
             }
 
             console.log("increment final score = " + this.score)
+            // Reset rolled pins
+            this.rolledPins = []
             return this.score;
         },
         // FrameScore checks for Spare and Strike
@@ -66,19 +68,26 @@ const gameBoard = Vue.createApp({
         bowlGutterGame() {
             this.newGame()
             // Bowl zero, twenty times
-            for (let i = 0; i < 20; i++) {
-                this.bowl(0);
-            }
+            this.bowlMany(0, 20);
             this.getScore();
         },
         bowlAllOnes() {
             this.newGame()
             // Bowl one, twenty times
-            for (let i = 0; i < 20; i++) {
-                this.bowl(1);
-            }
+            this.bowlMany(1, 20);
+            
             this.getScore();
-        }
+        },
+        bowlASpare() {
+            this.newGame()
+
+        },
+        // Roll multiple times
+        bowlMany(pins, bowls) {
+            for (let i=0; i < bowls; i++) {
+                this.bowl(pins)
+            }
+        },
 
     },
 })
