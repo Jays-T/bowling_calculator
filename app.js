@@ -5,20 +5,22 @@ const gameBoard = Vue.createApp({
             manualOptions: 'Manually bowl each roll',
             board: 'Click number of pins knocked down',
             score: 0,
-            standingPins: [
-                { number: 0 },
-                { number: 1 },
-                { number: 2 },
-                { number: 3 },
-                { number: 4 },
-                { number: 5 },
-                { number: 6 },
-                { number: 7 },
-                { number: 8 },
-                { number: 9 },
-                { number: 10 },
-            ],
             rolledPins: [],
+            frames: {},
+            currentFrame: 0,
+            roll: 1,
+        }
+    },
+    created() {
+        for (let i = 0; i < 10; i++) {
+            this.frames[i] = {
+                index: i + 1,
+                first: '',
+                seconds: '',
+                score: ''
+            };
+ 
+            this.pins = 10;
         }
     },
     methods: {
