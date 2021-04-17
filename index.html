@@ -26,14 +26,16 @@
             </div>
         </div>
     </div>
-    <div class="pins">
-        <button v-on:click="getScore()">Calculate Score</button>
-    </div>
-    <h3>{{ board }}</h3>
+    <h2>{{ presetOptions }}</h2>
     <div class="test-pins">
         <button v-on:click="bowlGutterGame()">Gutter</button>
         <button v-on:click="bowlAllOnes()">All 1</button>
     </div>
+    <h2>{{ manualOptions }}</h2>
+    <div class="pins">
+        <button v-on:click="getScore()">Score</button>
+    </div>
+    <h3>{{ board }}</h3>
     <div class="test-pins">
         <button v-on:click="bowl(`${pin.number}`)" v-for="pin of standingPins">{{ pin.number }}</button>
     </div>
