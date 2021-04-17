@@ -23,17 +23,24 @@ const gameBoard = Vue.createApp({
     methods: {
 
         bowl(pins) {
+            // Push pins for each roll into array of rolledPins
             this.rolledPins.push(parseInt(pins));
+            console.log(this.rolledPins);
         },
         getScore() {
+            console.log("getScore " + this.rolledPins)
             let finalScore = 0;
             let rollIndex = 0;
-            for (i=0; i < this.rolledPins.length; i++) {
-                this.score += this.rolledPins[i];
+
+            for ( let i=0; i < 10; i++) {
+                let frameScore = this.rolledPins[rollIndex] + this.rolledPins[rollIndex + 1];
+                console.log("this frameScore = " + frameScore);
+                this.score += parseInt(frameScore);
+                rollIndex += 2;
             }
-            // console.log(this.score);
-            // this.rolledPins = [];
-            // console.log(this.rolledPins);
+
+            console.log("increment final score = " + this.score)
+            return this.score;
         }
 
     },
