@@ -2,7 +2,6 @@ const gameBoard = Vue.createApp({
     data() {
         return {
             board: 'Click number of pins knocked down',
-            rolls: 0,
             score: 0,
             standingPins: [
                 { number: 0 },
@@ -21,7 +20,11 @@ const gameBoard = Vue.createApp({
         }
     },
     methods: {
-
+        newGame() {
+            // Reset score and rolledPins on new game
+            this.score = 0;
+            this.rolledPins = [];
+        },
         bowl(pins) {
             // Push pins for each roll into array of rolledPins
             this.rolledPins.push(parseInt(pins));
@@ -29,10 +32,9 @@ const gameBoard = Vue.createApp({
         },
         getScore() {
             console.log("getScore " + this.rolledPins)
-            let finalScore = 0;
             let rollIndex = 0;
 
-            for ( let i=0; i < 10; i++) {
+            for (let i=0; i < 10; i++) {
                 let frameScore = this.rolledPins[rollIndex] + this.rolledPins[rollIndex + 1];
                 console.log("this frameScore = " + frameScore);
                 this.score += parseInt(frameScore);
@@ -41,6 +43,22 @@ const gameBoard = Vue.createApp({
 
             console.log("increment final score = " + this.score)
             return this.score;
+        },
+        bowlGutterGame() {
+            this.newGame()
+            // Bowl zero, twenty times
+            for (let i = 0; i < 20; i++) {
+                this.bowl(0);
+            }
+            this.getScore();
+        },
+        bowlAllOnes() {
+            this.newGame()
+            // Bowl one, twenty times
+            for (let i = 0; i < 20; i++) {
+                this.bowl(1);
+            }
+            this.getScore();
         }
 
     },
