@@ -75,12 +75,16 @@ const gameBoard = Vue.createApp({
             this.newGame()
             // Bowl one, twenty times
             this.bowlMany(1, 20);
-            
+
             this.getScore();
         },
-        bowlASpare() {
-            this.newGame()
-
+        bowlSpare() {
+            this.newGame();
+            this.bowl(5);
+            this.bowl(5);
+            this.bowl(3);
+            this.bowlMany(0,17);
+            this.getScore();
         },
         // Roll multiple times
         bowlMany(pins, bowls) {
