@@ -52,8 +52,7 @@ const gameBoard = Vue.createApp({
             }
 
             console.log("increment final score = " + this.score)
-            // Reset rolled pins
-            this.rolledPins = []
+
             return this.score;
         },
         // FrameScore checks for Spare and Strike
