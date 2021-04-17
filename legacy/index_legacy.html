@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../legacy/style_legacy.css">
+    <title>Bowling Calculator</title>
+</head>
+<body>
+
+<div id="gameBoard">
+    <h1>Score: {{ score }}</h1>
+    <div id="scoreboard">
+        <div class="frame">
+            <div class="frame-count">1</div>
+            <div class="rolls">
+                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[0] }}</span>
+                <span class="first-roll" v-else></span>
+                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[1] }}</span>
+                <span class="second-roll" v-else></span>
+            </div>
+            <div class="frame-score">
+                <span class="frame-score" v-if="rolledPins[0] + rolledPins[1]">{{ rolledPins[0] + rolledPins[1] }}</span>
+                <span class="frame-score" v-else></span>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-count">2</div>
+            <div class="rolls">
+                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[2] }}</span>
+                <span class="first-roll" v-else></span>
+                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[3] }}</span>
+                <span class="second-roll" v-else></span>
+            </div>
+            <div class="frame-score">
+                <span class="frame-score" v-if="rolledPins[2] + rolledPins[3]">{{ rolledPins[2] + rolledPins[3] }}</span>
+                <span class="frame-score" v-else></span>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-count">3</div>
+            <div class="rolls">
+                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[4] }}</span>
+                <span class="first-roll" v-else></span>
+                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[5] }}</span>
+                <span class="second-roll" v-else></span>
+            </div>
+            <div class="frame-score">
+                <span class="frame-score" v-if="rolledPins[4] + rolledPins[5]">{{ rolledPins[4] + rolledPins[5] }}</span>
+                <span class="frame-score" v-else></span>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-count">4</div>
+            <div class="rolls">
+                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[6] }}</span>
+                <span class="first-roll" v-else></span>
+                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[7] }}</span>
+                <span class="second-roll" v-else></span>
+            </div>
+            <div class="frame-score">
+                <span class="frame-score" v-if="rolledPins[6] + rolledPins[7]">{{ rolledPins[6] + rolledPins[7] }}</span>
+                <span class="frame-score" v-else></span>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-count">5</div>
+            <div class="rolls">
+                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[8] }}</span>
+                <span class="first-roll" v-else></span>
+                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[9] }}</span>
+                <span class="second-roll" v-else></span>
+            </div>
+            <div class="frame-score">
+                <span class="frame-score" v-if="rolledPins[8] + rolledPins[9]">{{ rolledPins[8] + rolledPins[9] }}</span>
+                <span class="frame-score" v-else></span>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-count">6</div>
+            <div class="rolls">
+                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[10] }}</span>
+                <span class="first-roll" v-else></span>
+                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[11] }}</span>
+                <span class="second-roll" v-else></span>
+            </div>
+            <div class="frame-score">
+                <span class="frame-score" v-if="rolledPins[10] + rolledPins[11]">{{ rolledPins[10] + rolledPins[11] }}</span>
+                <span class="frame-score" v-else></span>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-count">7</div>
+            <div class="rolls">
+                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[12] }}</span>
+                <span class="first-roll" v-else></span>
+                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[13] }}</span>
+                <span class="second-roll" v-else></span>
+            </div>
+            <div class="frame-score">
+                <span class="frame-score" v-if="rolledPins[12] + rolledPins[13]">{{ rolledPins[12] + rolledPins[13] }}</span>
+                <span class="frame-score" v-else></span>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-count">8</div>
+            <div class="rolls">
+                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[14] }}</span>
+                <span class="first-roll" v-else></span>
+                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[15] }}</span>
+                <span class="second-roll" v-else></span>
+            </div>
+            <div class="frame-score">
+                <span class="frame-score" v-if="rolledPins[14] + rolledPins[15]">{{ rolledPins[14] + rolledPins[15] }}</span>
+                <span class="frame-score" v-else></span>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-count">9</div>
+            <div class="rolls">
+                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[16] }}</span>
+                <span class="first-roll" v-else></span>
+                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[17] }}</span>
+                <span class="second-roll" v-else></span>
+            </div>
+            <div class="frame-score">
+                <span class="frame-score" v-if="rolledPins[16] + rolledPins[17]">{{ rolledPins[16] + rolledPins[17] }}</span>
+                <span class="frame-score" v-else></span>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-count">10</div>
+            <div class="rolls">
+                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[18] }}</span>
+                <span class="first-roll" v-else></span>
+                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[19] }}</span>
+                <span class="second-roll" v-else></span>
+            </div>
+            <div class="frame-score">
+                <span class="frame-score" v-if="rolledPins[18] + rolledPins[19]">{{ rolledPins[18] + rolledPins[19] }}</span>
+                <span class="frame-score" v-else></span>
+            </div>
+        </div>
+    </div>
+    <h2>{{ presetOptions }}</h2>
+    <div class="pins">
+        <button v-on:click="bowlGutterGame()">All Gutters</button>
+        <button v-on:click="bowlAllOnes()">All Ones</button>
+        <button v-on:click="bowlSpare()">Spare</button>
+        <button v-on:click="bowlStrike()">Strike</button>
+        <button v-on:click="bowlStrikeSpare()">Strike/Spare</button>
+        <button v-on:click="bowlAllStrikes()">All Strikes</button>
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@3.0.5"></script>
+<script src="../legacy/app_legacy.js"></script>   
+</body>
+</html>
