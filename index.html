@@ -23,18 +23,9 @@
             </div>
         </div>
     </div>
-    <h2>{{ presetOptions }}</h2>
-    <div class="test-pins">
-        <button v-on:click="bowlGutterGame()">Gutter</button>
-        <button v-on:click="bowlAllOnes()">All 1</button>
-        <button v-on:click="bowlSpare()">Spare</button>
-    </div>
-    <h2>{{ manualOptions }}</h2>
-    <div class="pins">
-        <button v-on:click="getScore()">Score</button>
-    </div>
     <h3>{{ board }}</h3>
     <div class="test-pins">
+        <button v-on:click="bowl(0)">0</button>
         <button v-on:click="bowl(`${pin}`)" v-for="pin of pins">{{ pin }}</button>
     </div>
 </div>

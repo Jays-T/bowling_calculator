@@ -1,8 +1,6 @@
 const gameBoard = Vue.createApp({
     data() {
         return {
-            presetOptions: 'Bowl a preset game',
-            manualOptions: 'Manually bowl each roll',
             board: 'Click number of pins knocked down',
             frames: {},
             score: 0,
