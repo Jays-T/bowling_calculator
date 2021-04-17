@@ -12,7 +12,20 @@
 <div id="gameBoard">
     <h1>Score: {{ score }}</h1>
     <div id="scoreboard">
-
+        <div class="frame" v-for="frame of 10">
+            <div class="frame-count">{{ frame }}</div>
+            <div class="rolls">
+                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[0] }}</span>
+                <span class="first-roll" v-else></span>
+                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[1] }}</span>
+                <span class="second-roll" v-else></span>
+            </div>
+            <div class="frame-score">
+                <span class="frame-score" v-if="rolledPins[0] + rolledPins[1]">{{ rolledPins[0] + rolledPins[1] }}</span>
+                <span class="frame-score" v-else></span>
+            </div>
+        </div>
+        
         
     </div>
     <div class="pins">
