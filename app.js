@@ -1,6 +1,8 @@
 const gameBoard = Vue.createApp({
     data() {
         return {
+            presetOptions: 'Bowl a preset game',
+            manualOptions: 'Manually bowl each roll',
             board: 'Click number of pins knocked down',
             score: 0,
             standingPins: [
@@ -35,15 +37,32 @@ const gameBoard = Vue.createApp({
             let rollIndex = 0;
 
             for (let i=0; i < 10; i++) {
-                let frameScore = this.rolledPins[rollIndex] + this.rolledPins[rollIndex + 1];
+                // parseInt and store the value of each amount of rolled pins at rollIndex
+                let frameScore = parseInt(this.rolledPins[rollIndex] + this.rolledPins[rollIndex + 1]);
+
                 console.log("this frameScore = " + frameScore);
-                this.score += parseInt(frameScore);
+
+                // Check if frameScore is a Spare
+                if (this.isSpare(frameScore)) {
+                    this.score += this.getSpareBonus(rollIndex);
+                } else {
+                    this.score += frameScore;
+                }
                 rollIndex += 2;
             }
 
             console.log("increment final score = " + this.score)
             return this.score;
         },
+        // FrameScore checks for Spare and Strike
+        isSpare(frameScore) {
+            return frameScore === 10;
+        },
+        // Calculate score logic for Spare and Strike
+        getSpareBonus(rollIndex) {
+            return 10 + parseInt(this.rolledPins[rollIndex + 2])
+        },
+        // Preset full game rolls
         bowlGutterGame() {
             this.newGame()
             // Bowl zero, twenty times
