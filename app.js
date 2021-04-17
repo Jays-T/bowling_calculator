@@ -1,45 +1,42 @@
-const app = Vue.createApp({
-    template: '<h1>Bowling Calculator</h1>',
-});
-
-app.mount('#app')
-
 const gameBoard = Vue.createApp({
     data() {
         return {
             board: 'Click number of pins knocked down',
-            frames: 0,
-            score: 0
+            rolls: 0,
+            score: 0,
+            standingPins: [
+                { number: 0 },
+                { number: 1 },
+                { number: 2 },
+                { number: 3 },
+                { number: 4 },
+                { number: 5 },
+                { number: 6 },
+                { number: 7 },
+                { number: 8 },
+                { number: 9 },
+                { number: 10 },
+            ],
+            rolledPins: [],
         }
     },
     methods: {
-        
+
         bowl(pins) {
-            let strike = false;
-            let spare = false;
-            if (this.frames === 10) {
-                console.log("final score: " + this.score)
-                console.log("game over")
-                this.frames = 0;
-                this.score = 0;
-                return  
+            this.rolledPins.push(parseInt(pins));
+        },
+        getScore() {
+            let finalScore = 0;
+            let rollIndex = 0;
+            for (i=0; i < this.rolledPins.length; i++) {
+                this.score += this.rolledPins[i];
             }
-            if (pins === 10) {
-                this.score += 10;
-                this.frames += 2;
-                console.log("strike")
-            }
-            if (pins != 10) {
-                console.log("not a strike")
-                this.frames += 1;
-                this.score += pins;
-            }
-            console.log("pins knocked down = " + pins)
-            
-            console.log("frames played: " + this.frames)
-            console.log("score is now: " + this.score)
+            // console.log(this.score);
+            // this.rolledPins = [];
+            // console.log(this.rolledPins);
         }
-    }
+
+    },
 })
 
 gameBoard.mount('#gameBoard')

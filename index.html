@@ -9,25 +9,18 @@
 </head>
 <body>
 
-<div id="app"></div>
 <div id="gameBoard">
-    <h3>{{ board }}</h3>
     <h1>Score: {{ score }}</h1>
     <div id="scoreboard">
 
+        
     </div>
     <div class="pins">
-        <button v-on:click="bowl(0)" id="zero">0</button>
-        <button v-on:click="bowl(1)" id="one">1</button>
-        <button v-on:click="bowl(2)" id="two">2</button>
-        <button v-on:click="bowl(3)" id="three">3</button>
-        <button v-on:click="bowl(4)" id="four">4</button>
-        <button v-on:click="bowl(5)" id="five">5</button>
-        <button v-on:click="bowl(6)" id="six">6</button>
-        <button v-on:click="bowl(7)" id="seven">7</button>
-        <button v-on:click="bowl(8)" id="eight">8</button>
-        <button v-on:click="bowl(9)" id="nine">9</button>
-        <button v-on:click="bowl(10)" id="ten">10</button>
+        <button v-on:click="getScore()">Calculate Score</button>
+    </div>
+    <h3>{{ board }}</h3>
+    <div class="test-pins">
+        <button v-on:click="bowl(`${pin.number}`)" v-for="pin of standingPins">{{ pin.number }}</button>
     </div>
 </div>
 
