@@ -4,11 +4,12 @@ const gameBoard = Vue.createApp({
             presetOptions: 'Bowl a preset game',
             manualOptions: 'Manually bowl each roll',
             board: 'Click number of pins knocked down',
-            score: 0,
-            rolledPins: [],
             frames: {},
+            score: 0,
             currentFrame: 0,
             roll: 1,
+            spare: false,
+            strike: false,
         }
     },
     created() {
@@ -24,76 +25,55 @@ const gameBoard = Vue.createApp({
         }
     },
     methods: {
-        newGame() {
-            // Reset score and rolledPins on new game
-            this.score = 0;
-            this.rolledPins = [];
+        bowl(pin_number) {
+            const rollNumber = this.roll === 1 ? "first" : "second";
+
+            this.frames[this.currentFrame][rollNumber] = parseInt(pin_number);
+            
+            if (this.roll === 1) {
+                this.roll = 2
+                this.pins = 10 - this.frames[this.currentFrame].first;
+            } 
+            else {
+                this.roll = 1;
+                this.pins = 10;
+
+                let rollOne = this.frames[this.currentFrame].first;
+                let rollTwo = this.frames[this.currentFrame].second;
+
+                this.frames[this.currentFrame].score = this.frames[this.currentFrame].first + this.frames[this.currentFrame].second;
+                this.currentFrame++;
+                
+                this.updateTotalScore(rollOne, rollTwo);
+                
+            }
         },
-        bowl(pins) {
-            // Push pins for each roll into array of rolledPins
-            this.rolledPins.push(parseInt(pins));
-            console.log(this.rolledPins);
+        updatePins(pins) {
+
         },
-        getScore() {
-            console.log("getScore " + this.rolledPins)
-            let rollIndex = 0;
+        updateTotalScore(rollOne, rollTwo) {
+            let total = 0;
 
-            for (let i=0; i < 10; i++) {
-                // parseInt and store the value of each amount of rolled pins at rollIndex
-                let frameScore = parseInt(this.rolledPins[rollIndex] + this.rolledPins[rollIndex + 1]);
+            if (this.isStrike(rollOne)) {
+                console.log("This is a strike!");
+            } else if (this.isSpare(rollOne, rollTwo)) {
+                console.log("This is a spare!");
+            }
 
-                console.log("this frameScore = " + frameScore);
-
-                // Check if frameScore is a Spare
-                if (this.isSpare(frameScore)) {
-                    this.score += this.getSpareBonus(rollIndex);
-                } else {
-                    this.score += frameScore;
+            for (let i in this.frames) {
+                if (this.frames[i].score != '') {
+                    total += this.frames[i].score;
                 }
-                rollIndex += 2;
             }
 
-            console.log("increment final score = " + this.score)
-
-            return this.score;
+            this.score = total;
         },
-        // FrameScore checks for Spare and Strike
-        isSpare(frameScore) {
-            return frameScore === 10;
+        isStrike(rollOne) {
+            return rollOne === 10;
         },
-        // Calculate score logic for Spare and Strike
-        getSpareBonus(rollIndex) {
-            return 10 + parseInt(this.rolledPins[rollIndex + 2])
+        isSpare(rollOne, rollTwo) {
+            return rollOne + rollTwo === 10;
         },
-        // Preset full game rolls
-        bowlGutterGame() {
-            this.newGame()
-            // Bowl zero, twenty times
-            this.bowlMany(0, 20);
-            this.getScore();
-        },
-        bowlAllOnes() {
-            this.newGame()
-            // Bowl one, twenty times
-            this.bowlMany(1, 20);
-
-            this.getScore();
-        },
-        bowlSpare() {
-            this.newGame();
-            this.bowl(5);
-            this.bowl(5);
-            this.bowl(3);
-            this.bowlMany(0,17);
-            this.getScore();
-        },
-        // Roll multiple times
-        bowlMany(pins, bowls) {
-            for (let i=0; i < bowls; i++) {
-                this.bowl(pins)
-            }
-        },
-
     },
 })
 
