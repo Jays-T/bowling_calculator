@@ -12,17 +12,14 @@
 <div id="gameBoard">
     <h1>Score: {{ score }}</h1>
     <div id="scoreboard">
-        <div class="frame" v-for="frame of 10">
-            <div class="frame-count">{{ frame }}</div>
+        <div class="frame" v-for="frame of frames">
+            <div class="frame-count">{{ frame.index }}</div>
             <div class="rolls">
-                <span class="first-roll" v-if="rolledPins.length > 0">{{ rolledPins[0] }}</span>
-                <span class="first-roll" v-else></span>
-                <span class="second-roll" v-if="rolledPins.length > 0">{{ rolledPins[1] }}</span>
-                <span class="second-roll" v-else></span>
+                <span class="first-roll">{{ frame.first }}</span>
+                <span class="second-roll">{{ frame.second }}</span>
             </div>
             <div class="frame-score">
-                <span class="frame-score" v-if="rolledPins[0] + rolledPins[1]">{{ rolledPins[0] + rolledPins[1] }}</span>
-                <span class="frame-score" v-else></span>
+                <span class="frame-score">{{ frame.score }}</span>
             </div>
         </div>
     </div>
@@ -38,7 +35,7 @@
     </div>
     <h3>{{ board }}</h3>
     <div class="test-pins">
-        <button v-on:click="bowl(`${pin.number}`)" v-for="pin of standingPins">{{ pin.number }}</button>
+        <button v-on:click="bowl(`${pin}`)" v-for="pin of pins">{{ pin }}</button>
     </div>
 </div>
 
