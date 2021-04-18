@@ -84,7 +84,7 @@ const gameBoard = Vue.createApp({
 
             this.score = total;
         },
-        // Preset full game rolls
+        // Preset full game rolls for testing
         bowlGutterGame() {
             this.newGame()
             this.bowlMany(0, 20);
