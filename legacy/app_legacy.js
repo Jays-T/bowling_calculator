@@ -72,12 +72,6 @@ const gameBoard = Vue.createApp({
         getSpareBonus(rollIndex) {
             return 10 + parseInt(this.rolledPins[rollIndex + 2]);
         },
-        // isStrike() {
-            
-        // },
-        // getStrikeBonus() {
-
-        // },
         // Preset full game rolls
         bowlGutterGame() {
             this.newGame()
