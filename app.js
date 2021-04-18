@@ -6,7 +6,6 @@ const gameBoard = Vue.createApp({
             score: 0,
             currentFrame: 0,
             roll: 1,
-            spare: false,
             strike: false,
         }
     },
@@ -31,6 +30,10 @@ const gameBoard = Vue.createApp({
             let rollOne = this.frames[this.currentFrame].first;
             let rollTwo = this.frames[this.currentFrame].second;
 
+            if(rollOne === 10) {
+                this.strike = true;
+            }
+
             if (this.roll === 1) {
                 this.roll = 2
                 this.pins = 10 - this.frames[this.currentFrame].first;
@@ -51,6 +54,17 @@ const gameBoard = Vue.createApp({
         },
         updateTotalScore(rollOne, rollTwo) {
             let total = 0;
+
+            for (let i = 0; i < this.currentFrame; i++){
+                if (i !== 0) {
+                    if (this.strike) {
+                        this.frames[i - 1].score += this.frames[i].first + this.frames[i].second; 
+                        this.strike = false;
+                    } else {
+                        this.strike = false;
+                    }
+                }
+            }
 
             for (let j = 0; j < this.currentFrame; j++) {
                     // check for previous spare
