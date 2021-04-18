@@ -57,6 +57,13 @@ My time was limited but I took a further look into Vue js lifecycle hooks, set m
 ## What does not work
 - Frame by Frame score does not update correctly when bowling a Strike or multiple Strikes
 
+## To run testing you need to install jest
+- npm init
+- npm install --save-dev jest
+
+However unit testing with jest was not implemented successfully
+
+## There is no need to install vue to run this app as the source file is included in the repo
 
 ## Images sourced from nicepng.com and favpng.com
 
