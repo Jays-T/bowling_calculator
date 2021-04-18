@@ -8,8 +8,11 @@
     <title>Bowling Calculator</title>
 </head>
 <body>
-
+    
 <div id="gameBoard">
+    <div class="legacy">
+        <a href="legacy/index_legacy.html" target="_blank">Bowl Preset Games on Legacy App</a>
+    </div>
     <h1>Score: {{ score }}</h1>
     <div id="scoreboard">
         <div class="frame" v-for="frame of frames">
@@ -28,9 +31,10 @@
         <button v-on:click="bowl(0)">0</button>
         <button v-on:click="bowl(`${pin}`)" v-for="pin of pins">{{ pin }}</button>
     </div>
+    
 </div>
 
-<script src="https://unpkg.com/vue@3.0.5"></script>
+<script src="vue.global.prod.js"></script>
 <script src="app.js"></script>   
 </body>
 </html>
