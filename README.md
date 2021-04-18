@@ -31,6 +31,7 @@ My time was limited but I took a further look into Vue js lifecycle hooks, set m
   * if roll is 10 strike is set to true
   * on the next frame if strike is set to true, the score will append the scores of both rolls in the current frame to the score of the previous frame when the strike occured and strike will then be set to false
   * The scoring does not check if there was a strike 2 frames ago
+  * Final frame potential bonus rolls are also not considered or factored in
 ## Legacy app
 - Scoring is not rendered dynamically
 
@@ -44,6 +45,7 @@ My time was limited but I took a further look into Vue js lifecycle hooks, set m
 - Bowling 10 (you then have to bowl 0 to move to the next frame), 5/5, 4/0 will give you a score of 38.
 ## What does not work
 - Bowling 10 strikes will give you a score of 190 which is incorrect.
+- Final bonus rolls are not included 
 
 ## [Legacy App](https://jays-t.github.io/bowling_calculator/legacy/index_legacy.html)
 ## What does work
