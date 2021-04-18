@@ -84,6 +84,52 @@ const gameBoard = Vue.createApp({
 
             this.score = total;
         },
+        // Preset full game rolls
+        bowlGutterGame() {
+            this.newGame()
+            this.bowlMany(0, 20);
+            this.getScore();
+        },
+        bowlAllOnes() {
+            this.newGame()
+            this.bowlMany(1, 20);
+            this.getScore();
+        },
+        bowlSpare() {
+            this.newGame();
+            this.bowl(5);
+            this.bowl(5);
+            this.bowl(3);
+            this.bowlMany(0,17);
+            this.getScore();
+        },
+        bowlStrike() {
+            this.newGame();
+            this.bowl(10);
+            this.bowl(1);
+            this.bowl(1);
+            this.bowlMany(0, 17);
+            this.getScore();
+        },
+        bowlAllStrikes() {
+            this.newGame();
+            this.bowlMany(10,20);
+            this.getScore();
+        },
+        bowlStrikeSpare() {
+            this.newGame();
+            this.bowl(10);
+            this.bowlMany(5, 2);
+            this.bowl(4);
+            this.bowl(0);
+            this.bowlMany(0, 14);
+            this.getScore();
+        },
+        bowlMany(pin_number, bowls) {
+            for (let i=0; i < bowls; i++) {
+                this.bowl(pin_number)
+            }
+        },
     },
 })
 
