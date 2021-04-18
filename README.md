@@ -1,5 +1,7 @@
 # Code Challenge
 
+[Test It Out](https://jays-t.github.io/bowling_calculator/)
+
 ## The challenge is to build:
 - A calculator service that consist of the bowling logic (Backend. If doing frontend only make this service in frontend only) This service can can have a function like function calculate(currentRoll: Roll, historicRolls: array of Rolls)
 - A view to fill in all the bowling values (Frontend)
