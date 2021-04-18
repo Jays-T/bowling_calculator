@@ -15,7 +15,7 @@
 - [Legacy App](https://jays-t.github.io/bowling_calculator/legacy/index_legacy.html)
 
 The reason for this is because my first attempt and approach was the Legacy app. I went with the way I 'know' how to do things. Manually adding multiple elements and trying to manipulate them after the fact. Pushing the 'pins' knocked down on each roll into an array. Iterating over the entire sequence of rolls and frames calculating the over all score.
-The limitations of this approach are clearly demonstrated in [this clip](https://gyazo.com/7fc9f205acea8fb0cd6b3d03c6ed805a)
+Some of the limitations of this approach are demonstrated in [this clip](https://gyazo.com/7fc9f205acea8fb0cd6b3d03c6ed805a)
 The overall score updates, but the frame scores do not update correctly as Spare and Strike bonuses are only calculated after all the rolls have been completed. At this point, dynamically updating frame by frame becomes very tricky to solve. Also managing the state of each element becomes very cumbersome (manually entering index values of an array).
 
 My time was limited but I took a further look into Vue js lifecycle hooks, set my initial app as legacy_app and then set about adjusting my approach. 
