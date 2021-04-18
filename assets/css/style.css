@@ -20,7 +20,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url('assets/images/NicePng_bowling-pin-png_9688654.png');
+  background-image: url('../images/NicePng_bowling-pin-png_9688654.png');
   background-repeat: no-repeat;
   background-position: center bottom;
   background-color: hsl(270, 6%, 35%);
@@ -112,7 +112,7 @@ button::before {
   height: 100%;
   width: 100%;
   opacity: .4;
-  background: url('assets/images/favpng_bowling-ball-clip-art.png');
+  background: url('../images/favpng_bowling-ball-clip-art.png');
 }
 
 button:focus {
